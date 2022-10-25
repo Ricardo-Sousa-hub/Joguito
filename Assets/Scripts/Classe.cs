@@ -19,6 +19,8 @@ public class Classe : MonoBehaviour
     public float moveSpeed;
     public float range;
 
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {

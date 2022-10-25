@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ddfb10753ea92fd4ea3f3a40ba38807d
+guid: 8af7ef23690c7c344b07cae17f5f085c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: personagem_mago_0
+      name: personagem_magoBA2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3992461da9ecd5147ac598d98c525bd8
-      internalID: 1749297438
+      spriteID: b17b675ad80a35e4189fbd6355ce403e
+      internalID: 1575556986
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      personagem_mago_0: 1749297438
+      personagem_magoBA2_0: 1575556986
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
