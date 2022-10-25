@@ -36,6 +36,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        rb.velocity = new Vector2(moveDirection.x * controller.classes[controller.classeSelecionada].moveSpeed * Time.deltaTime, moveDirection.y * controller.classes[controller.classeSelecionada].moveSpeed * Time.deltaTime);
+        rb.velocity = new Vector2(moveDirection.x * controller.personagens[controller.classeSelecionada].GetComponent<Classe>().moveSpeed * Time.deltaTime, moveDirection.y * controller.personagens[controller.classeSelecionada].GetComponent<Classe>().moveSpeed * Time.deltaTime);
     }
 }

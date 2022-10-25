@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Classes")]
     [Space(5)]
-    public List<Classe> classes;
+    public List<GameObject> personagens;
     public int classeSelecionada;
 
     [Space(10)]
@@ -21,11 +21,13 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = classes[classeSelecionada].health;
-        shield = classes[classeSelecionada].shield;
-        atackSpeed = classes[classeSelecionada].atackSpeed;
-        moveSpeed = classes[classeSelecionada].moveSpeed;
-        range = classes[classeSelecionada].range;
+        personagens[classeSelecionada].SetActive(true);
+
+        health = personagens[classeSelecionada].GetComponent<Classe>().health;
+        shield = personagens[classeSelecionada].GetComponent<Classe>().shield;
+        atackSpeed = personagens[classeSelecionada].GetComponent<Classe>().atackSpeed;
+        moveSpeed = personagens[classeSelecionada].GetComponent<Classe>().moveSpeed;
+        range = personagens[classeSelecionada].GetComponent<Classe>().range;
     }
 
     // Update is called once per frame
