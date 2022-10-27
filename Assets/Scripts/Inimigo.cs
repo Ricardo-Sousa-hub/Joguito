@@ -20,7 +20,8 @@ public class Inimigo : MonoBehaviour
     public Animator anim;
 
     private GameObject player;
-    public float distancia;
+    private float distancia;
+    public float distanciaStop;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,7 @@ public class Inimigo : MonoBehaviour
         direcao.Normalize();
         //float angulo = Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg;
 
-        if(distancia > 0.2f)
+        if(distancia > distanciaStop)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
             //transform.rotation = Quaternion.Euler(Vector3.forward * angulo);

@@ -105,3 +105,4 @@ MonoBehaviour:
   range: 0
   anim: {fileID: 0}
   distancia: 0
+  distanciaStop: 0.3
