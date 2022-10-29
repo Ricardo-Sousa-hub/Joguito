@@ -426,6 +426,7 @@ GameObject:
   - component: {fileID: 620497116}
   - component: {fileID: 620497118}
   - component: {fileID: 620497120}
+  - component: {fileID: 620497121}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -500,16 +501,30 @@ MonoBehaviour:
   - {fileID: 8472748844818965717}
   - {fileID: 64051694}
   - {fileID: 1972963278}
-  classeSelecionada: 0
+  personagemSelecionada: 1
   health: 0
   shield: 0
   atackSpeed: 0
   moveSpeed: 0
   range: 0
   esq: 0
-  ataques:
-  - {fileID: 1419223920571193620, guid: 7b8cc02d83a5c50459b8b87ac6e3d5aa, type: 3}
   firePoint: {fileID: 1323136940}
+--- !u!70 &620497121
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620497115}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.021751642}
+  m_Size: {x: 0.5, y: 0.65197384}
+  m_Direction: 0
 --- !u!1 &1323136940 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6342660513503371079, guid: 1c00ad0d8a633f04b96368790016b0f1, type: 3}

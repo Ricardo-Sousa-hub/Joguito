@@ -25,5 +25,14 @@ public class Projetil : MonoBehaviour
         Destroy(gameObject, destruirApos);
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Inimigo"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+    }
+
 
 }

@@ -157,3 +157,5 @@ MonoBehaviour:
   moveSpeed: 125
   range: 50
   anim: {fileID: 3868359363511458873}
+  ataques:
+  - {fileID: 1419223920571193620, guid: 7b8cc02d83a5c50459b8b87ac6e3d5aa, type: 3}

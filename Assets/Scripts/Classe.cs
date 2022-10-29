@@ -21,6 +21,8 @@ public class Classe : MonoBehaviour
 
     public Animator anim;
 
+    public List<GameObject> ataques;
+
     // Start is called before the first frame update
     void Start()
     {

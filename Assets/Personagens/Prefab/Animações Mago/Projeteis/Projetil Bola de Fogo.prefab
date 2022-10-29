@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4154158084358220688}
   - component: {fileID: 1865597713727371348}
   - component: {fileID: -4756731650203264190}
-  - component: {fileID: 484073154010937273}
+  - component: {fileID: 3878445899478334726}
   m_Layer: 0
   m_Name: Projetil Bola de Fogo
   m_TagString: Untagged
@@ -143,8 +143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destruirApos: 3
   velocidade: 1000
---- !u!61 &484073154010937273
-BoxCollider2D:
+  target: {fileID: 0}
+--- !u!70 &3878445899478334726
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -153,19 +154,9 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0056866705, y: 0.00284338}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.61725324, y: 0.23245382}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.18, y: 0.0006187856}
+  m_Size: {x: 0.22866273, y: 0.22866273}
+  m_Direction: 0

@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [Header("Classes")]
     [Space(5)]
     public List<GameObject> personagens;
-    public int classeSelecionada;
+    public int personagemSelecionada;
 
     [Space(10)]
     [Header("Stats do personagem")]
@@ -23,23 +23,41 @@ public class PlayerController : MonoBehaviour
 
     private Animator anim;
 
-    public List<GameObject> ataques;
     private float lastShot = 0.0f;
-
+    private List<GameObject> ataques;
     public GameObject firePoint;
+
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        personagens[classeSelecionada].SetActive(true);
+        rb = GetComponent<Rigidbody2D>();
 
-        health = personagens[classeSelecionada].GetComponent<Classe>().health;
-        shield = personagens[classeSelecionada].GetComponent<Classe>().shield;
-        atackSpeed = personagens[classeSelecionada].GetComponent<Classe>().atackSpeed;
-        moveSpeed = personagens[classeSelecionada].GetComponent<Classe>().moveSpeed;
-        range = personagens[classeSelecionada].GetComponent<Classe>().range;
+        switch (personagemSelecionada)
+        {
+            case 0:
+                rb.mass = 50;
+                break;
+            case 1:
+                rb.mass = 90;
+                break;
+            case 2:
+                rb.mass = 50;
+                break;
+        }
 
-        anim = personagens[classeSelecionada].GetComponent<Classe>().anim;
+        personagens[personagemSelecionada].SetActive(true);
+
+        ataques = personagens[personagemSelecionada].GetComponent<Classe>().ataques;
+
+        health = personagens[personagemSelecionada].GetComponent<Classe>().health;
+        shield = personagens[personagemSelecionada].GetComponent<Classe>().shield;
+        atackSpeed = personagens[personagemSelecionada].GetComponent<Classe>().atackSpeed;
+        moveSpeed = personagens[personagemSelecionada].GetComponent<Classe>().moveSpeed;
+        range = personagens[personagemSelecionada].GetComponent<Classe>().range;
+
+        anim = personagens[personagemSelecionada].GetComponent<Classe>().anim;
     }
 
     // Update is called once per frame
@@ -104,12 +122,12 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         if (moveX < 0 && !esq)
         {
-            personagens[classeSelecionada].transform.RotateAround(transform.position, transform.up, 180f);
+            personagens[personagemSelecionada].transform.RotateAround(transform.position, transform.up, 180f);
             esq = true;
         }
         else if (moveX > 0 && esq)
         {
-            personagens[classeSelecionada].transform.RotateAround(transform.position, transform.up, 180f);
+            personagens[personagemSelecionada].transform.RotateAround(transform.position, transform.up, 180f);
             esq = false;
         }
     }
