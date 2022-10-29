@@ -500,13 +500,21 @@ MonoBehaviour:
   - {fileID: 8472748844818965717}
   - {fileID: 64051694}
   - {fileID: 1972963278}
-  classeSelecionada: 2
+  classeSelecionada: 0
   health: 0
   shield: 0
   atackSpeed: 0
   moveSpeed: 0
   range: 0
   esq: 0
+  ataques:
+  - {fileID: 1419223920571193620, guid: 7b8cc02d83a5c50459b8b87ac6e3d5aa, type: 3}
+  firePoint: {fileID: 1323136940}
+--- !u!1 &1323136940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6342660513503371079, guid: 1c00ad0d8a633f04b96368790016b0f1, type: 3}
+  m_PrefabInstance: {fileID: 8472748844818965715}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1972963278 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3588884052413874999, guid: 5514365aa4bb43046a0504ee5b8e9e0a, type: 3}
@@ -593,9 +601,10 @@ MonoBehaviour:
   inimigos:
   - {fileID: 8340717079389796055, guid: 4ef16f0bb05bfef469ce2c3e63df0682, type: 3}
   - {fileID: 6655479214748952841, guid: 559c67b54114b04468bce84647868dcd, type: 3}
-  intervaloDeSpawn: 3
-  x: 5
-  y: 6
+  - {fileID: 3562235509539897659, guid: 1197dad6f6bec094c971e098ac9586e2, type: 3}
+  intervaloDeSpawn: 1.2
+  x: 4
+  y: 4
 --- !u!4 &2113747516
 Transform:
   m_ObjectHideFlags: 0

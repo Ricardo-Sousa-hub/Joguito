@@ -20,7 +20,13 @@ public class PlayerController : MonoBehaviour
 
     public bool esq = false;
 
+
     private Animator anim;
+
+    public List<GameObject> ataques;
+    private float lastShot = 0.0f;
+
+    public GameObject firePoint;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +53,14 @@ public class PlayerController : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("Inimigo"))
         {
+            if (Time.time > atackSpeed + lastShot && GameObject.FindObjectOfType<Inimigo>())
+            {
+                Inimigo inimigo = ProcuraInimigoMaisProximo();
+
+                GameObject disparo = Instantiate(ataques[0], firePoint.transform.position, CalcularAnguloDeProjetil(inimigo));
+                disparo.GetComponent<Projetil>().target = inimigo;
+                lastShot = Time.time;
+            }
             anim.SetBool("Inimigo", true);
         }
         else
@@ -54,6 +68,36 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Inimigo", false);
         }
     }
+
+    Inimigo ProcuraInimigoMaisProximo()
+    {
+        Inimigo[] inimigos = GameObject.FindObjectsOfType<Inimigo>();
+
+        float dist = Vector2.Distance(transform.position, inimigos[0].transform.position);
+        Inimigo maisProx = inimigos[0];
+
+        for (int i = 1; i < inimigos.Length; i++)
+        {
+            if (Vector2.Distance(transform.position, inimigos[i].transform.position) < dist)
+            {
+                dist = Vector2.Distance(transform.position, inimigos[i].transform.position);
+                maisProx = inimigos[i];
+            }
+        }
+        return maisProx;
+    }
+
+    Quaternion CalcularAnguloDeProjetil(Inimigo inimigo)
+    {
+        Inimigo target = inimigo;
+        Vector2 dir = target.transform.position - transform.position;
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        return Quaternion.AngleAxis(angle, Vector3.forward);
+
+    }
+
 
     void Virar()
     {

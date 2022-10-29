@@ -48,4 +48,10 @@ public class Inimigo : MonoBehaviour
             //transform.rotation = Quaternion.Euler(Vector3.forward * angulo);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(collision.gameObject);
+        Destroy(gameObject);
+    }
 }
