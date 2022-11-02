@@ -23,7 +23,7 @@ public class Inimigo : MonoBehaviour
     private float distancia;
     public float distanciaStop;
 
-    public bool esq = true;
+    public bool esq;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,8 @@ public class Inimigo : MonoBehaviour
     void Update()
     {
         Move();
-        FreezeZ();
+        Virar();
+        //Freeze();
     }
 
     void Move()
@@ -52,20 +53,23 @@ public class Inimigo : MonoBehaviour
         }
     }
 
-    void FreezeZ()
+    void Freeze()
     {
-        if(player.transform.position.x < 0 && !esq)
-        {
-            transform.eulerAngles = new Vector3(0f, 180f, 0f);
-            esq = true;
-        }
-        else if(player.transform.position.x > 0 && esq)
+        transform.eulerAngles = new Vector3(0f, transform.rotation.y, 0f);
+    }
+
+    void Virar()
+    {
+        if(player.transform.position.x < transform.position.x && !esq)
         {
             transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            esq = true;
+        }
+        else if(player.transform.position.x > transform.position.x && esq)
+        {
+            transform.eulerAngles = new Vector3(0f, 180f, 0f);
             esq = false;
         }
-
-        transform.eulerAngles = new Vector3(0f, transform.rotation.y, 0f);
     }
 
 }

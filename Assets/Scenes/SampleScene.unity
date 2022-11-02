@@ -501,7 +501,7 @@ MonoBehaviour:
   - {fileID: 8472748844818965717}
   - {fileID: 64051694}
   - {fileID: 1972963278}
-  personagemSelecionada: 1
+  personagemSelecionada: 0
   health: 0
   shield: 0
   atackSpeed: 0
