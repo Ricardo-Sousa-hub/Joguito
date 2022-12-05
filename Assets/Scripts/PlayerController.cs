@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public float range;
 
     public bool esq = false;
-
+    public bool doubleAtack = false;
 
     private Animator anim;
 
@@ -71,14 +71,23 @@ public class PlayerController : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("Inimigo"))
         {
-            if (Time.time > atackSpeed + lastShot && GameObject.FindObjectOfType<Inimigo>())
+            if (doubleAtack)
             {
-                Inimigo inimigo = ProcuraInimigoMaisProximo();
-
-                GameObject disparo = Instantiate(ataques[0], firePoint.transform.position, CalcularAnguloDeProjetil(inimigo));
-                disparo.GetComponent<Projetil>().target = inimigo;
-                lastShot = Time.time;
+                //atacar duas vezes caso doubleAtack
+                //selecionar inimigo, e depois selecionar segundo inimigo mais proximo
             }
+            else
+            {
+                if (Time.time > atackSpeed + lastShot && GameObject.FindObjectOfType<Inimigo>())
+                {
+                    Inimigo inimigo = ProcuraInimigoMaisProximo();
+
+                    GameObject disparo = Instantiate(ataques[0], firePoint.transform.position, CalcularAnguloDeProjetil(inimigo));
+                    disparo.GetComponent<Projetil>().target = inimigo;
+                    lastShot = Time.time;
+                }
+            }
+            
             anim.SetBool("Inimigo", true);
         }
         else
@@ -113,7 +122,6 @@ public class PlayerController : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
         return Quaternion.AngleAxis(angle, Vector3.forward);
-
     }
 
 
