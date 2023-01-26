@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -73,8 +74,18 @@ public class PlayerController : MonoBehaviour
         {
             if (doubleAtack)
             {
-                //atacar duas vezes caso doubleAtack
-                //selecionar inimigo, e depois selecionar segundo inimigo mais proximo
+                if(Time.time > atackSpeed + lastShot && GameObject.FindObjectOfType<Inimigo>())
+                {
+                    Inimigo[] inimigos = ProcuraInimigosMaisProximos();
+
+                    GameObject disparo = Instantiate(ataques[0], firePoint.transform.position, CalcularAnguloDeProjetil(inimigos[0]));
+                    disparo.GetComponent<Projetil>().target = inimigos[0];
+
+                    disparo = Instantiate(ataques[0], firePoint.transform.position, CalcularAnguloDeProjetil(inimigos[1]));
+                    disparo.GetComponent<Projetil>().target = inimigos[1];
+
+                    lastShot = Time.time;
+                }
             }
             else
             {
@@ -112,6 +123,31 @@ public class PlayerController : MonoBehaviour
             }
         }
         return maisProx;
+    }
+
+
+    Inimigo[] ProcuraInimigosMaisProximos()
+    {
+        Inimigo[] inimigos = GameObject.FindObjectsOfType<Inimigo>();
+
+        for(int i = 0; i < inimigos.Length; i++)
+        {
+            for(int y = i; y < inimigos.Length; y++)
+            {
+                float dist1 = Vector2.Distance(transform.position, inimigos[i].transform.position);
+                float dist2 = Vector2.Distance(transform.position, inimigos[y].transform.position);
+
+                if(dist2 < dist1)
+                {
+                    var temp = inimigos[i];
+                    inimigos[i] = inimigos[y];
+                    inimigos[y] = temp;
+                }
+            }
+        }
+
+        Inimigo[] alvos = { inimigos[0], inimigos[1] };
+        return alvos;
     }
 
     Quaternion CalcularAnguloDeProjetil(Inimigo inimigo)

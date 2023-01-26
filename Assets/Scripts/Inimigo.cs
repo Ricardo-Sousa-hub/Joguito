@@ -20,7 +20,7 @@ public class Inimigo : MonoBehaviour
     public Animator anim;
 
     private GameObject player;
-    private float distancia;
+    public float distancia;
     public float distanciaStop;
 
     public bool esq;
