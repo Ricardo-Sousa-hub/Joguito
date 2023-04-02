@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Classes")]
     [Space(5)]
     public List<GameObject> personagens;
+    public List<Sprite> carasPersonages;
     public int personagemSelecionada;
 
     [Space(10)]

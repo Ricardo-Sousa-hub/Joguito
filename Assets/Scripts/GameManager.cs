@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,12 +16,18 @@ public class GameManager : MonoBehaviour
     private float lastY = 0;
 
     private GameObject player;
+    public Image healthBar;
+    public Image caraPersonagem;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(spawnEnemy(intervaloDeSpawn, inimigos[0]));
         player = GameObject.FindGameObjectWithTag("Player");
+        float maxHealth = player.GetComponent<PlayerController>().personagens[player.GetComponent<PlayerController>().personagemSelecionada].GetComponent<Classe>().health;
+        float health = player.GetComponent<PlayerController>().health;
+        caraPersonagem.sprite = player.GetComponent<PlayerController>().carasPersonages[player.GetComponent<PlayerController>().personagemSelecionada];
+        healthBar.fillAmount = map((int)health, (int)maxHealth, 1);
     }
 
     // Update is called once per frame
@@ -48,5 +55,10 @@ public class GameManager : MonoBehaviour
 
         Instantiate(inimigo, new Vector3(coordX, coordY, 0f), Quaternion.identity);
         StartCoroutine(spawnEnemy(tempo, inimigos[0]));
+    }
+
+    private int map(int a, int b, int x)
+    {
+        return (x * b) / a;
     }
 }
