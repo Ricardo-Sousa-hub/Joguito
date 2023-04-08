@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,36 +19,40 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     public Image healthBar;
     public Image caraPersonagem;
+    private float health;
+    private float maxHealth;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(spawnEnemy(intervaloDeSpawn, inimigos[0]));
         player = GameObject.FindGameObjectWithTag("Player");
-        float maxHealth = player.GetComponent<PlayerController>().personagens[player.GetComponent<PlayerController>().personagemSelecionada].GetComponent<Classe>().health;
-        float health = player.GetComponent<PlayerController>().health;
+        maxHealth = player.GetComponent<PlayerController>().personagens[player.GetComponent<PlayerController>().personagemSelecionada].GetComponent<Classe>().health;
+        health = player.GetComponent<PlayerController>().health;
         caraPersonagem.sprite = player.GetComponent<PlayerController>().carasPersonages[player.GetComponent<PlayerController>().personagemSelecionada];
-        healthBar.fillAmount = map((int)health, (int)maxHealth, 1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        health = player.GetComponent<PlayerController>().health;
+        healthBar.fillAmount = map(health, 0, maxHealth, 0, 1);
+        Debug.Log(health);
+        Debug.Log(healthBar.fillAmount);
     }
 
     private IEnumerator spawnEnemy(float tempo, GameObject inimigo)
     {
         yield return new WaitForSeconds(tempo);
 
-        float coordX = Random.Range(-x, x);
-        float coordY = Random.Range(-y, y);
+        float coordX = UnityEngine.Random.Range(-x, x);
+        float coordY = UnityEngine.Random.Range(-y, y);
 
         // Não spawnar em cima do jogador nem em cima de outro monstro
         while((coordY == player.transform.position.y && coordX == player.transform.position.x) || (coordY == lastY && coordX == lastX) )
         {
-            coordX = Random.Range(-x, x);
-            coordY = Random.Range(-y, y);
+            coordX = UnityEngine.Random.Range(-x, x);
+            coordY = UnityEngine.Random.Range(-y, y);
         }
 
         lastX = coordX;
@@ -57,8 +62,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(spawnEnemy(tempo, inimigos[0]));
     }
 
-    private int map(int a, int b, int x)
+    private static float map(float value, float fromLow, float fromHigh, float toLow, float toHigh)
     {
-        return (x * b) / a;
+        return (value - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow;
     }
 }

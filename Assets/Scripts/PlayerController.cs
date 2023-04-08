@@ -22,7 +22,14 @@ public class PlayerController : MonoBehaviour
     public float range;
 
     public bool esq = false;
+
+    [Space(10)]
+    [Header("Habilidades do personagem")]
+    [Space(5)]
     public bool doubleAtack = false;
+    public bool hasBalls = false;
+    public int howManyBalls = 1;
+    public GameObject ballRotator;
 
     private Animator anim;
 
@@ -68,6 +75,26 @@ public class PlayerController : MonoBehaviour
     {
         Virar();
         Atacar();
+        HasBalls();
+        UpdateHealth();
+    }
+
+    //personagens[personagemSelecionada].GetComponent<SpriteRenderer>().color = Color.red;
+
+    private void UpdateHealth() 
+    {
+        
+    }
+
+    private void HasBalls()
+    {
+        if(hasBalls)
+        {
+            ballRotator.GetComponent<RotatingBall>().number = howManyBalls;
+        }else
+        {
+            ballRotator.GetComponent<RotatingBall>().number = 0;    
+        }
     }
 
     void Atacar()
