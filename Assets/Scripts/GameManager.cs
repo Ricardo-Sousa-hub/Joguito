@@ -37,8 +37,6 @@ public class GameManager : MonoBehaviour
     {
         health = player.GetComponent<PlayerController>().health;
         healthBar.fillAmount = map(health, 0, maxHealth, 0, 1);
-        Debug.Log(health);
-        Debug.Log(healthBar.fillAmount);
     }
 
     private IEnumerator spawnEnemy(float tempo, GameObject inimigo)

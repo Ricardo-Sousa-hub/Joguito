@@ -100,12 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nomeClasse: Monstro Vampiro
-  health: 0
+  health: 100
   shield: 0
   atackSpeed: 0
   moveSpeed: 1
   range: 0
   anim: {fileID: 0}
+  distancia: 0
   distanciaStop: 0.3
   esq: 0
 --- !u!70 &-3450868507213567884

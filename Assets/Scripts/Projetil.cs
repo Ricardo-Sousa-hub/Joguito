@@ -7,6 +7,7 @@ public class Projetil : MonoBehaviour
     private Rigidbody2D rb;
     public float destruirApos;
     public float velocidade;
+    public float damage;
     private Vector2 moveDirection;
 
     public Inimigo target; //Recebe alvo do script PlayerController
